@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>UIT Assignment-2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/f65cc028f8.js" crossorigin="anonymous"></script>
+    <link href="uit2.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="brand-name">
+                    <a href="" class="logo">CS18501 - UI</a>
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#form">Form</a></li>
+                        <li><a href="#theme">Theme</a></li>                   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="container">
+            <div class="row full-screen">
+                <div class="home-content">
+                    <div class="block">                        
+                        <h1>UI Assignment - 2</h1>
+                        <h6>Done By</h6>
+                        <h3>R Gokul Chowdary (44)</h3>
+                        <h5>&</h5>
+                        <h3>K Sree Meghana (82)</h3>
+                        <div class="cv-button">
+                            <a href="#form">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section class="form-section" id="form">
+        <div class="container">
+            <div class="row">
+                <div class="section-title">
+                    <h1>Form</h1>
+                    <p class="small">Html Form </p>
+                </div>
+            </div>
+            <br />   
+            <div class="container my-custom-container" id="marginadjust">
+                
+                <div class="jumbotron">
+                    <form onsubmit="return validation()">
+                      <div class="form-group" style="text-align: center;">
+                        <h1>Html Form!!</h1>            
+                      </div>
+                      <br/>
+                      <div class="form-group adjusment">
+                        <label for="exampleInputName">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name" aria-describedby="nameHelp">           
+                      </div>
+                      <div class="form-group adjusment">
+                        <label for="exampleInputAge">Age:</label>
+                        <input type="number" class="form-control" id="age" placeholder="Age" min="0" max="150" aria-describedby="ageHelp">          
+                      </div>
+                      <div class="form-group adjusment">
+                        <label for="exampleInputEmail1">Phone No:</label>
+                        <input type="tel" class="form-control" id="mn" placeholder="Phone Number" maxlength="10" aria-describedby="numberHelp">         
+                      </div>
+                      <div class="form-group adjusment">
+                        <label for="exampleInputEmail1">Email address:</label>
+                        <input type="email" class="form-control" id="em" placeholder="UserName" name="username" aria-describedby="emailHelp">           
+                      </div>
+                      <div class="form-group adjusment">
+                        <label for="exampleadob">DOB:</label>
+                        <input type="date" class="form-control"  name="dob" >
+                    </div>
+                      <button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 35px;">Submit</button>
+                    </form>
+                </div>
+            </div>         
+        </div>
+    </section>
+
+    <section class="slideshow-section" id="theme">
+        <div class="container">
+            <div class="row">
+                <div class="section-title">
+                    <h1>Theme</h1>
+                    <p class="small">Click to change BG color </p>
+                </div>
+            </div>
+        </div>
+        <br />
+        
+        <div id="slider">
+            <div id="box">
+                <img src="white.jpg" >
+            </div>
+    
+            <!-- buttons for controls slider -->
+            <button class="prew fa fa-chevron-left " onclick="prewImage()"></button>
+            <button class="next fa fa-chevron-right " onclick="nextImage()"></button>
+        </div>
+        
+    </section>
+  
+
+    <script >
+        
+        window.onscroll = function () {
+            
+            const docScrollTop = document.documentElement.scrollTop;
+            if (window.innerWidth > 991) {
+                if (docScrollTop > 100) {
+                    document.querySelector("header").classList.add("fixed")
+                } else {
+                    document.querySelector("header").classList.remove ("fixed")
+                }
+            }   
+        }
+function bc(color){
+    document.body.style.background= color;
+}
+
+// navbarlinks
+var slider_content = document.getElementById('box');
+
+// contain images in an array
+var image = ['grey','darkseagreen','cadetblue','white'];
+
+var i = image.length;
+
+
+// function for next slide 
+
+function nextImage(){
+  if (i<image.length) {
+	  i= i+1;
+  }else{
+	  i = 1;
+  }
+	slider_content.innerHTML = "<img src="+image[i-1]+".jpg>";
+    bc(image[i-1]);
+}
+
+
+// function for prew slide
+
+function prewImage(){
+
+  if (i<image.length+1 && i>1) {
+	  i= i-1;
+  }else{
+	  i = image.length;
+  }
+	slider_content.innerHTML = "<img src="+image[i-1]+".jpg>";
+    bc(image[i-1]);
+}
+
+        function validation()
+        {   
+            var user = document.getElementById('name').value;
+            var ag = document.getElementById('age').value;
+            var mon = document.getElementById('mn').value;
+            var emails = document.getElementById('em').value;
+            var letters = /^[A-Za-z]+$/;
+
+            if((user.length <= 2) || (user.length > 25))
+            {
+                alert("First Name lenght must be between 2 and 25");
+                return false; 
+            }
+
+            if(!user.match(letters))
+            {
+                alert('Name must be in alphabet characters only');
+                return false;
+            }
+
+
+            if(ag == "")
+            { 
+                alert("Please fil the Age field");
+                return false;
+            }
+  
+            if(isNaN(ag))
+            {
+                alert("Please input digits only");
+                return false;
+            }
+            
+            if(ag <= 0)
+            {
+                alert("Age should be greater than 0");
+                return false; 0
+            }
+
+            if(ag > 150)
+            {
+                alert("Age cannot exceed 150");
+                return false;
+            }
+  
+            if(emails.indexOf('@') <= 0 )
+            {
+                alert(" @ Invalid Position");
+                return false;
+            }
+
+            if((emails.charAt(emails.length-4)!='.') && (emails.charAt(emails.length-3)!='.'))
+            {
+                alert(" . Invalid Position");
+                return false;
+            }
+
+            if(mon.length < 10)
+            {
+                alert("Mobile Number must be 10 digits only");
+                return false;
+            } 
+
+            if(isNaN(mon))
+            {
+                alert("Mobile number must be digits only");
+                return false;
+            }
+
+            alert("Your response has been submitted");
+        }
+
+var color=["#222f3e","#f368e0","#ee5253","#0abde3","#10ac84","#5f27cd"];
+var colorrev=["#5f27cd","#10ac84","#0abde3","#454851","#f368e0","#222f3e"];
+var i=0;
+document.querySelector("button").addEventListener("click",function(){
+	i=i<color.length? ++i:0;
+	document.querySelector("body").style.background=color[i];
+	
+})
+document.querySelector("button").addEventListener("click",function(){
+	i=i<colorrev.length? ++i:0;
+	document.querySelector("p").style.color=colorrev[i];
+	
+})
+    </script>
+</body>
+</html>
